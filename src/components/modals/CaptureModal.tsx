@@ -1,0 +1,84 @@
+import {
+  Box,
+  Group,
+  Modal,
+  Paper,
+  Stack,
+  ThemeIcon,
+  Text,
+  Image,
+  useMantineTheme,
+} from "@mantine/core";
+import { IconPhoto, IconCamera, IconFile } from "@tabler/icons";
+import React from "react";
+import { ImageCaptureArea } from "../svg/ImageCaptureArea";
+import DriversLicense from "../../../src/assets/images/drivers-license.png";
+
+interface CaptureModalProps {
+  openedCapModal: boolean;
+  handlerCapModal: {
+    open: () => void;
+    close: () => void;
+  };
+}
+
+export const CaptureModal = ({
+  openedCapModal,
+  handlerCapModal,
+}: CaptureModalProps) => {
+  const theme = useMantineTheme();
+  return (
+    <Modal
+      opened={openedCapModal}
+      onClose={() => handlerCapModal.close()}
+      withCloseButton={false}
+      size="lg"
+      styles={{
+        modal: {
+          background: "transparent",
+        },
+      }}
+    >
+      <Paper radius="lg" shadow="xl" p={20}>
+        <Stack align="center">
+          <Text weight="bold" size="xl">
+            Driver's License
+          </Text>
+          <Text>Please point the camera at the ID card</Text>
+          <Text>
+            <Box sx={{ position: "relative" }}>
+              <ImageCaptureArea />
+              <Image
+                src={DriversLicense.src}
+                width={250}
+                sx={{
+                  position: "absolute",
+                  top: "9%",
+                  left: "0",
+                  bottom: "0",
+                  right: "0",
+                  margin: "auto",
+                }}
+              />
+            </Box>
+          </Text>
+          <Group>
+            <ThemeIcon radius={100} color="brand.1" size="xl" role="button">
+              <IconPhoto stroke={1.5} color={theme.colors.brand[3]} size={20} />
+            </ThemeIcon>
+            <ThemeIcon radius={100} color="brand.1" size="xl">
+              <IconCamera
+                stroke={1.5}
+                color={theme.colors.brand[3]}
+                size={20}
+              />
+            </ThemeIcon>
+            <ThemeIcon radius={100} color="brand.1" size="xl">
+              <IconFile stroke={1.5} color={theme.colors.brand[3]} size={20} />
+            </ThemeIcon>
+          </Group>
+        </Stack>
+      </Paper>
+    </Modal>
+  );
+};
