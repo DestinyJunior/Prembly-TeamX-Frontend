@@ -1,18 +1,17 @@
 import {
+  ActionIcon,
   Box,
   Group,
+  Image,
   Modal,
   Paper,
   Stack,
-  ThemeIcon,
   Text,
-  Image,
   useMantineTheme,
 } from "@mantine/core";
-import { IconPhoto, IconCamera, IconFile } from "@tabler/icons";
-import React from "react";
-import { ImageCaptureArea } from "../svg/ImageCaptureArea";
+import { IconCamera, IconFile, IconPhoto } from "@tabler/icons";
 import DriversLicense from "../../../src/assets/images/drivers-license.png";
+import { ImageCaptureArea } from "../svg/ImageCaptureArea";
 
 interface CaptureModalProps {
   openedCapModal: boolean;
@@ -38,6 +37,7 @@ export const CaptureModal = ({
           background: "transparent",
         },
       }}
+      closeOnEscape
     >
       <Paper radius="lg" shadow="xl" p={20}>
         <Stack align="center">
@@ -63,19 +63,25 @@ export const CaptureModal = ({
             </Box>
           </Text>
           <Group>
-            <ThemeIcon radius={100} color="brand.1" size="xl" role="button">
+            <ActionIcon
+              radius={100}
+              color="brand.1"
+              size={40}
+              variant="filled"
+              role="button"
+            >
               <IconPhoto stroke={1.5} color={theme.colors.brand[3]} size={20} />
-            </ThemeIcon>
-            <ThemeIcon radius={100} color="brand.1" size="xl">
+            </ActionIcon>
+            <ActionIcon radius={100} color="brand.3" size={50} variant="filled">
               <IconCamera
                 stroke={1.5}
-                color={theme.colors.brand[3]}
+                // color={theme.colors.brand[3]}
                 size={20}
               />
-            </ThemeIcon>
-            <ThemeIcon radius={100} color="brand.1" size="xl">
+            </ActionIcon>
+            <ActionIcon radius={100} color="brand.1" size={40} variant="filled">
               <IconFile stroke={1.5} color={theme.colors.brand[3]} size={20} />
-            </ThemeIcon>
+            </ActionIcon>
           </Group>
         </Stack>
       </Paper>

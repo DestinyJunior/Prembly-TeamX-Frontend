@@ -1,24 +1,18 @@
 import {
-  ActionIcon,
   Box,
   Button,
   Checkbox,
   createStyles,
-  Group,
-  Image,
-  Modal,
   Paper,
   Select,
   Stack,
   Text,
   TextInput,
-  ThemeIcon,
   Timeline,
-  Title,
   useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconCamera, IconFile, IconPhoto } from "@tabler/icons";
+import { useRouter } from "next/router";
 import { VerificationLayout } from "../../src/components/layout/layout";
 import { CaptureModal } from "../../src/components/modals/CaptureModal";
 
@@ -39,7 +33,8 @@ const useStyles = createStyles((theme) => ({
 const DetailsPage = () => {
   const theme = useMantineTheme();
   const { classes } = useStyles();
-  const [openedCapModal, handlerCapModal] = useDisclosure(false);
+  const [openedCapModal, handlerCapModal] = useDisclosure(true);
+  const router = useRouter();
 
   return (
     <>
@@ -63,16 +58,19 @@ const DetailsPage = () => {
                 color="brand.3"
               >
                 <Timeline.Item
-                  title={<Text size={14}>Verify your identity</Text>}
+                  title={
+                    <Text size={14} weight="normal">
+                      Verify your identity
+                    </Text>
+                  }
                 />
                 <Timeline.Item
                   title={
-                    <Text size={14} p={0} m={0}>
+                    <Text size={14} weight="normal">
                       Facial Verification
                     </Text>
                   }
                 />
-                <Timeline.Item title={<Text size={14}>Create Password</Text>} />
               </Timeline>
             </Paper>
           </>
@@ -91,25 +89,19 @@ const DetailsPage = () => {
               <TextInput
                 radius="xl"
                 color="brand.3"
-                label={<Text color="brand.4">First Name</Text>}
-                placeholder="Enter your first name"
-              />
-              <TextInput
-                radius="xl"
-                color="brand.3"
-                label={<Text color="brand.4">Last Name</Text>}
-                placeholder="Enter your last name"
-              />
-
-              <TextInput
-                radius="xl"
-                color="brand.3"
                 label={<Text color="brand.4">Phone Number</Text>}
-                placeholder="Enter your phone number"
+                placeholder="Enter your Phone Number"
               />
               <Select
-                label={<Text color="brand.4">Choose Identity Type"</Text>}
-                data={[]}
+                label={<Text color="brand.4">Choose Identity Type</Text>}
+                data={[
+                  { label: "National ID", value: "national_id" },
+                  {
+                    label: "International Passport",
+                    value: "international_passport",
+                  },
+                  { label: "Driver's License", value: "driver_license" },
+                ]}
                 placeholder="Choose Identity Type"
                 styles={{
                   input: {
@@ -128,11 +120,16 @@ const DetailsPage = () => {
               <Checkbox
                 label={
                   <Text color="brand.4" span>
-                    I agree to the terms and conditions"{" "}
+                    I agree to the terms and conditions
                   </Text>
                 }
               />
-              <Button color="brand.3" px={80} radius="xl">
+              <Button
+                color="brand.3"
+                px={80}
+                radius="xl"
+                onClick={() => router.push("/verification")}
+              >
                 Continue
               </Button>
             </Stack>

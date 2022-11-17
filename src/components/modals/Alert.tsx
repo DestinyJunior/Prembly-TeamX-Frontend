@@ -1,5 +1,5 @@
 import { Button, Modal, Stack, Text, useMantineTheme } from "@mantine/core";
-import React from "react";
+import { useRouter } from "next/router";
 import { AlertErrorIcon } from "../svg/AlertErrorIcon";
 import { AlertSuccessIcon } from "../svg/AlertSuccessIcon";
 
@@ -20,6 +20,7 @@ export const Alert = ({
   openedAlert,
   handlerAlert,
 }: AlertProps) => {
+  const router = useRouter();
   const theme = useMantineTheme();
   console.log("openedAlert", theme.colors);
   const icon =
@@ -31,7 +32,9 @@ export const Alert = ({
   return (
     <Modal
       opened={openedAlert}
-      onClose={() => handlerAlert.close()}
+      onClose={() => {
+        handlerAlert.close();
+      }}
       withCloseButton={false}
       radius="md"
       centered
@@ -41,7 +44,10 @@ export const Alert = ({
         <Text align="center">{title}</Text>
         <Text align="center">{message}</Text>
         <Button
-          onClick={() => handlerAlert.close()}
+          onClick={() => {
+            router.push("/login");
+            handlerAlert.close();
+          }}
           radius="xl"
           color="brand.3"
           px={40}

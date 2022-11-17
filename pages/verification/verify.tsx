@@ -24,7 +24,6 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     overflow: "hidden",
     paddingTop: HEADER_HEIGHT,
-    maxWidth: "350px",
   },
 }));
 const Verify = () => {
@@ -68,30 +67,40 @@ const Verify = () => {
       <Box className={classes.wrapper}>
         <Stack align="left">
           <Title order={2}>Facial Verification</Title>
-          <Text size="sm" color="dimmed">
+          <Text size="sm" color="dimmed" sx={{ maxWidth: "60%" }}>
             You are required to take a selfie of yourself. Please grant camera
             access to complete this process.
           </Text>
-          <Image src={capture.src} height={300} fit="contain" />
-          <Stack align="center">
-            <Text size="xl" weight="bolder">
-              100%
-            </Text>
-            <Text>Verifying your face</Text>
-          </Stack>
-          <Group position="center">
-            <Button color="brand.3" radius={50} px={30}>
-              Retake
-            </Button>
-            <Button
-              color="brand.3"
-              radius={50}
-              px={30}
-              onClick={() => handler.open()}
-            >
-              Verify
-            </Button>
-          </Group>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              justifyContent: "center",
+              maxWidth: "260px",
+            }}
+          >
+            <Image src={capture.src} height={250} width={260} fit="contain" />
+            <Stack align="center" spacing={5}>
+              <Text size="xl" weight="bolder">
+                100%
+              </Text>
+              <Text>Verifying your face</Text>
+            </Stack>
+            <Group position="center">
+              <Button color="brand.3" radius={50} px={30}>
+                Retake
+              </Button>
+              <Button
+                color="brand.3"
+                radius={50}
+                px={30}
+                onClick={() => handler.open()}
+              >
+                Verify
+              </Button>
+            </Group>
+          </Box>
         </Stack>
         <Alert
           openedAlert={opened}

@@ -16,7 +16,7 @@ import {
 } from "@tabler/icons";
 // import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import { useState } from "react";
 import hero1 from "../../src/assets/images/hero1.png";
 import { VerificationLayout } from "../../src/components/layout/layout";
 
@@ -24,13 +24,18 @@ const HEADER_HEIGHT = 67;
 
 const useStyles = createStyles((theme) => ({
   service_card: {
+    width: "18rem",
+    fontSize: "0.875rem",
+    svg: {
+      color: theme.colors.brand[3],
+    },
     ":hover": {
       borderColor: theme.colors.brand[3],
       backgroundColor: theme.colors.brand[3],
       transition: "200ms",
       color: "#fff",
       svg: {
-        color: "#fff !important",
+        color: "#ffffff !important",
       },
     },
     borderColor: theme.colors.brand[3],
@@ -39,6 +44,9 @@ const useStyles = createStyles((theme) => ({
     borderColor: theme.colors.brand[3],
     backgroundColor: theme.colors.brand[3],
     color: "#fff",
+    svg: {
+      color: "#ffffff !important",
+    },
   },
 }));
 
@@ -46,13 +54,15 @@ export default function HomePage() {
   const { classes, cx } = useStyles();
   const theme = useMantineTheme();
   const router = useRouter();
-  const [hover, setHover] = React.useState({
+
+  const [services, setServices] = useState({
     airbnb: false,
     bank: false,
     shopping: false,
     ecommerce: false,
   });
-  const [selectedService, setSelectedService] = React.useState("");
+
+  const selectedAServices = Object.values(services).filter((s) => s)[0];
   return (
     <VerificationLayout
       sideContent={
@@ -72,20 +82,15 @@ export default function HomePage() {
         <SimpleGrid cols={2} sx={{ justifyContent: "center" }}>
           <Paper
             withBorder
+            onClick={() => setServices({ ...services, bank: !services.bank })}
             className={cx(classes.service_card, [
-              selectedService === "bank" && classes.active,
+              services.bank && classes.active,
             ])}
             p={20}
-            onMouseEnter={() => setHover({ ...hover, bank: true })}
-            onMouseLeave={() => setHover({ ...hover, bank: false })}
-            onClick={() => setSelectedService("bank")}
           >
+            {" "}
             <Stack align="center" spacing={5}>
-              <IconBuildingBank
-                stroke={1.5}
-                size={50}
-                color={hover.bank ? "white" : theme.colors.brand[3]}
-              />
+              <IconBuildingBank stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 Bank
               </Text>
@@ -96,20 +101,17 @@ export default function HomePage() {
           </Paper>
           <Paper
             withBorder
+            onClick={() =>
+              setServices({ ...services, airbnb: !services.airbnb })
+            }
             p={20}
             className={cx(classes.service_card, [
-              selectedService === "airbnb" && classes.active,
+              services.airbnb && classes.active,
             ])}
-            onMouseEnter={() => setHover({ ...hover, airbnb: true })}
-            onMouseLeave={() => setHover({ ...hover, airbnb: false })}
-            onClick={() => setSelectedService("airbnb")}
+            id="airbnb"
           >
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={hover.airbnb ? "white" : theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -120,20 +122,16 @@ export default function HomePage() {
           </Paper>
           <Paper
             withBorder
+            onClick={() =>
+              setServices({ ...services, shopping: !services.shopping })
+            }
             p={20}
             className={cx(classes.service_card, [
-              selectedService === "shopping" && classes.active,
+              services.shopping && classes.active,
             ])}
-            onMouseEnter={() => setHover({ ...hover, shopping: true })}
-            onMouseLeave={() => setHover({ ...hover, shopping: false })}
-            onClick={() => setSelectedService("shopping")}
           >
             <Stack align="center" spacing={5}>
-              <IconShoppingCart
-                stroke={1.5}
-                size={50}
-                color={hover.shopping ? "white" : theme.colors.brand[3]}
-              />
+              <IconShoppingCart stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 Shopping
               </Text>
@@ -144,20 +142,16 @@ export default function HomePage() {
           </Paper>
           <Paper
             withBorder
+            onClick={() =>
+              setServices({ ...services, ecommerce: !services.ecommerce })
+            }
             p={20}
             className={cx(classes.service_card, [
-              selectedService === "ecommerce" && classes.active,
+              services.ecommerce && classes.active,
             ])}
-            onMouseEnter={() => setHover({ ...hover, ecommerce: true })}
-            onMouseLeave={() => setHover({ ...hover, ecommerce: false })}
-            onClick={() => setSelectedService("ecommerce")}
           >
             <Stack align="center" spacing={5}>
-              <IconShoppingCart
-                stroke={1.5}
-                size={50}
-                color={hover.ecommerce ? "white" : theme.colors.brand[3]}
-              />
+              <IconShoppingCart stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 E-commerce
               </Text>
@@ -172,6 +166,7 @@ export default function HomePage() {
           px={80}
           radius="xl"
           onClick={() => router.push("/select-service/details")}
+          disabled={!selectedAServices}
         >
           Continue
         </Button>

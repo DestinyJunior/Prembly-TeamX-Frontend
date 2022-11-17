@@ -81,7 +81,7 @@ export const VerificationLayout = ({
             </Box>
             <Box
               sx={{
-                borderBottom: getActiveLink(router.pathname, "/select-service")
+                borderBottom: getActiveLink(router.pathname, "/verification")
                   ? "solid 1px" + theme.colors.brand[3]
                   : "",
               }}
@@ -100,7 +100,7 @@ export const VerificationLayout = ({
             </Box>
           </Group>
 
-          <Text>
+          <Text px={20}>
             Having problems?{" "}
             <Text span color="brand.4">
               {" "}

@@ -287,11 +287,11 @@ const ChattingsPage = () => {
                   }}
                 >
                   <Group position="apart" sx={{ width: "100%" }} noWrap>
-                    <ActionIcon color="brand.3" variant="filled" radius={100}>
-                      <IconPlus stroke={1.5} color={theme.white} size={14} />
+                    <ActionIcon color="brand.3" radius={100}>
+                      <IconPlus stroke={1.5} />
                     </ActionIcon>
                     <TextInput
-                      sx={{ width: "100%" }}
+                      sx={{ width: "80%" }}
                       radius="xl"
                       placeholder="Type a message"
                       styles={(theme) => ({
@@ -305,7 +305,7 @@ const ChattingsPage = () => {
                       })}
                       rightSection={
                         <ActionIcon color="brand.3" radius={100}>
-                          <IconMicrophone />
+                          <IconMicrophone stroke={1.5} />
                         </ActionIcon>
                       }
                     />

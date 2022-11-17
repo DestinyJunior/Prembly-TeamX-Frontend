@@ -2,12 +2,8 @@ import {
   Box,
   Button,
   createStyles,
-  Grid,
-  Group,
-  Header,
   Paper,
   Stack,
-  Stepper,
   Text,
   Timeline,
   Title,
@@ -49,17 +45,25 @@ const VerificationPage = () => {
           <Paper radius="sm" shadow="xs" p={40}>
             <Timeline active={0} bulletSize={14} lineWidth={2} color="brand.3">
               <Timeline.Item
-                title={<Text size={14}>Make sure you’re well captured</Text>}
+                title={
+                  <Text size={14} weight="normal">
+                    Make sure you’re well captured
+                  </Text>
+                }
               />
               <Timeline.Item
                 title={
-                  <Text size={14} p={0} m={0}>
+                  <Text size={14} weight="normal">
                     Show your face clearly{" "}
                   </Text>
                 }
               />
               <Timeline.Item
-                title={<Text size={14}>Look straight to the camera</Text>}
+                title={
+                  <Text size={14} weight="normal">
+                    Look straight to the camera
+                  </Text>
+                }
               />
             </Timeline>
           </Paper>

@@ -23,7 +23,10 @@ const useStyles = createStyles((theme) => ({
     paddingRight: theme.spacing.md,
   },
   service_card: {
-    ":hover": {
+    svg: {
+      color: theme.colors.brand[3],
+    },
+    "&:hover": {
       borderColor: theme.colors.brand[3],
       backgroundColor: theme.colors.brand[3],
       transition: "200ms",
@@ -118,11 +121,7 @@ const Agents = () => {
         <SimpleGrid cols={4} my={20}>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -133,11 +132,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -148,11 +143,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -163,11 +154,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -178,11 +165,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -193,11 +176,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
@@ -208,11 +187,7 @@ const Agents = () => {
           </Paper>
           <Paper withBorder p={20} className={classes.service_card}>
             <Stack align="center" spacing={5}>
-              <IconBrandAirbnb
-                stroke={1.5}
-                size={50}
-                color={theme.colors.brand[3]}
-              />
+              <IconBrandAirbnb stroke={1.5} size={50} />
               <Text size="xl" align="center">
                 AirBnB
               </Text>
