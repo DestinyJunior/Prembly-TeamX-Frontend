@@ -71,7 +71,7 @@ export function CustomNavbar() {
   return (
     <Navbar width={{ sm: 250 }} p="md" className={classes.navbar}>
       <Navbar.Section className={classes.header}>
-        <Group position="center" py={5}>
+        <Group position="center" pt={5}>
           <Logo />
         </Group>
       </Navbar.Section>

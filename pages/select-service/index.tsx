@@ -2,20 +2,22 @@ import {
   Box,
   Button,
   createStyles,
+  Image,
   Paper,
   SimpleGrid,
   Stack,
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import Image from "next/image";
-import hero1 from "../../src/assets/images/hero1.png";
-import { VerificationLayout } from "../../src/components/layout/layout";
 import {
+  IconBrandAirbnb,
   IconBuildingBank,
   IconShoppingCart,
-  IconBrandAirbnb,
 } from "@tabler/icons";
+// import Image from "next/image";
+import { useRouter } from "next/router";
+import hero1 from "../../src/assets/images/hero1.png";
+import { VerificationLayout } from "../../src/components/layout/layout";
 
 const HEADER_HEIGHT = 67;
 
@@ -32,23 +34,29 @@ const useStyles = createStyles((theme) => ({
     },
     borderColor: theme.colors.brand[3],
   },
+  active: {
+    borderColor: theme.colors.brand[3],
+    backgroundColor: theme.colors.brand[3],
+    color: "#fff",
+  },
 }));
 
 export default function HomePage() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
+  const router = useRouter();
   return (
     <VerificationLayout
       sideContent={
         <Box mt={HEADER_HEIGHT}>
-          <Text size={35} weight="bolder" align="center">
+          <Text size={30} weight="bolder" align="center">
             Optimizing digital communication with{" "}
             <Text span color="brand.4">
               customers
             </Text>
           </Text>
 
-          <Image src={hero1} layout="fixed" width={500} height={500} />
+          <Image src={hero1.src} fit="contain" width={400} height={500} />
         </Box>
       }
     >
@@ -115,7 +123,12 @@ export default function HomePage() {
             </Stack>
           </Paper>
         </SimpleGrid>
-        <Button color="brand.3" px={80} radius="xl">
+        <Button
+          color="brand.3"
+          px={80}
+          radius="xl"
+          onClick={() => router.push("/select-service/details")}
+        >
           Continue
         </Button>
       </Stack>

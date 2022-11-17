@@ -1,27 +1,24 @@
 import {
-  useMantineTheme,
   Box,
-  Paper,
-  Timeline,
-  Stack,
-  Title,
   Button,
   createStyles,
-  Text,
   Group,
   Image,
+  Paper,
+  Stack,
+  Text,
+  Timeline,
+  Title,
+  useMantineTheme,
 } from "@mantine/core";
-import { IconCamera } from "@tabler/icons";
+import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
-import React from "react";
+import capture from "../../src/assets/images/capture.png";
 import {
   HEADER_HEIGHT,
   VerificationLayout,
 } from "../../src/components/layout/layout";
-import { ImageCaptureAreaMini } from "../../src/components/svg/ImageCaptureMini";
-import capture from "../../src/assets/images/capture.png";
 import { Alert } from "../../src/components/modals/Alert";
-import { useDisclosure } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -86,13 +83,18 @@ const Verify = () => {
             <Button color="brand.3" radius={50} px={30}>
               Retake
             </Button>
-            <Button color="brand.3" radius={50} px={30}>
+            <Button
+              color="brand.3"
+              radius={50}
+              px={30}
+              onClick={() => handler.open()}
+            >
               Verify
             </Button>
           </Group>
         </Stack>
         <Alert
-          openedAlert={!opened}
+          openedAlert={opened}
           title="Verification Successful"
           type="success"
           message="You have been verified successfully!

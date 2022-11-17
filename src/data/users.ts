@@ -1,0 +1,105 @@
+// const users =}
+export const users = [
+  {
+    id: 1,
+    name: "John Doe",
+    bank: "Access Bank",
+    status: "active",
+  },
+  {
+    id: 2,
+    name: "Jane Doe",
+    bank: "GTBank",
+    status: "inactive",
+  },
+  {
+    id: 3,
+    name: "John Smith",
+    bank: "Polaris Bank",
+    status: "active",
+  },
+  {
+    id: 4,
+    name: "Jane Smith",
+    bank: "Access Bank",
+    status: "inactive",
+  },
+  {
+    id: 5,
+    name: "John Doe",
+    bank: "GTBank",
+    status: "active",
+  },
+  {
+    id: 6,
+    name: "Jane Doe",
+    bank: "Polaris Bank",
+    status: "inactive",
+  },
+  {
+    id: 7,
+    name: "John Smith",
+    bank: "Access Bank",
+    status: "active",
+  },
+  {
+    id: 8,
+    name: "Jane Smith",
+    bank: "GTBank",
+    status: "inactive",
+  },
+  {
+    id: 9,
+    name: "John Doe",
+    bank: "Polaris Bank",
+    status: "active",
+  },
+  {
+    id: 10,
+    name: "Jane Doe",
+    bank: "Access Bank",
+    status: "inactive",
+  },
+  {
+    id: 11,
+    name: "John Smith",
+    bank: "GTBank",
+    status: "active",
+  },
+  {
+    id: 12,
+    name: "Jane Smith",
+    bank: "Polaris Bank",
+    status: "inactive",
+  },
+  {
+    id: 13,
+    name: "John Doe",
+    bank: "Access Bank",
+    status: "active",
+  },
+  {
+    id: 14,
+    name: "Jane Doe",
+    bank: "GTBank",
+    status: "inactive",
+  },
+  {
+    id: 15,
+    name: "John Smith",
+    bank: "Polaris Bank",
+    status: "active",
+  },
+  {
+    id: 16,
+    name: "Jane Smith",
+    bank: "Access Bank",
+    status: "inactive",
+  },
+  {
+    id: 17,
+    name: "John Doe",
+    bank: "GTBank",
+    status: "active",
+  },
+];

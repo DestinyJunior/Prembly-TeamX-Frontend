@@ -1,5 +1,18 @@
-import { Box, createStyles, Grid, Group, Header, Text } from "@mantine/core";
+import { getActiveLink } from "@/utils";
+import {
+  Anchor,
+  Box,
+  createStyles,
+  Grid,
+  Group,
+  Header,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
+import { NextLink } from "@mantine/next";
+import { useRouter } from "next/router";
 import React from "react";
+import { NumberMenu } from "../NumberMenu";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -39,11 +52,53 @@ export const VerificationLayout = ({
   sideContent: React.ReactNode;
 }) => {
   const { classes } = useStyles();
+  const router = useRouter();
+  const theme = useMantineTheme();
+
   return (
     <Box>
-      <Header p="md" height={HEADER_HEIGHT} fixed>
+      <Header fixed height="">
         <Group position="apart" align="center">
-          <Group>helld</Group>
+          <Group>
+            <Box
+              sx={{
+                borderBottom: getActiveLink(router.pathname, "/select-service")
+                  ? "solid 1px" + theme.colors.brand[3]
+                  : "",
+              }}
+              py="lg"
+              px={60}
+            >
+              <Group>
+                <NumberMenu
+                  number={1}
+                  isActive={getActiveLink(router.pathname, "/select-service")}
+                />
+                <Anchor size="sm" href="/select-service" component={NextLink}>
+                  Select Service
+                </Anchor>
+              </Group>
+            </Box>
+            <Box
+              sx={{
+                borderBottom: getActiveLink(router.pathname, "/select-service")
+                  ? "solid 1px" + theme.colors.brand[3]
+                  : "",
+              }}
+              py="lg"
+              px={60}
+            >
+              <Group>
+                <NumberMenu
+                  number={2}
+                  isActive={getActiveLink(router.pathname, "/verification")}
+                />
+                <Anchor size="sm" href="/verification" component={NextLink}>
+                  Verification
+                </Anchor>{" "}
+              </Group>
+            </Box>
+          </Group>
 
           <Text>
             Having problems?{" "}

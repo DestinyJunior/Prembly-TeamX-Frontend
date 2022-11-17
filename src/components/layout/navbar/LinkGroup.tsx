@@ -97,7 +97,7 @@ export function LinksGroup({
         ])}
         my={15}
       >
-        <Group position="apart" spacing={0} p="sm">
+        <Group position="apart" spacing={0} px="sm">
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Icon
               size={20}
