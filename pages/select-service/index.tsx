@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons";
 // import Image from "next/image";
 import { useRouter } from "next/router";
+import React from "react";
 import hero1 from "../../src/assets/images/hero1.png";
 import { VerificationLayout } from "../../src/components/layout/layout";
 
@@ -42,9 +43,16 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default function HomePage() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const theme = useMantineTheme();
   const router = useRouter();
+  const [hover, setHover] = React.useState({
+    airbnb: false,
+    bank: false,
+    shopping: false,
+    ecommerce: false,
+  });
+  const [selectedService, setSelectedService] = React.useState("");
   return (
     <VerificationLayout
       sideContent={
@@ -62,12 +70,21 @@ export default function HomePage() {
     >
       <Stack align="center" justify="center" pt={HEADER_HEIGHT + 40}>
         <SimpleGrid cols={2} sx={{ justifyContent: "center" }}>
-          <Paper withBorder className={classes.service_card} p={20}>
+          <Paper
+            withBorder
+            className={cx(classes.service_card, [
+              selectedService === "bank" && classes.active,
+            ])}
+            p={20}
+            onMouseEnter={() => setHover({ ...hover, bank: true })}
+            onMouseLeave={() => setHover({ ...hover, bank: false })}
+            onClick={() => setSelectedService("bank")}
+          >
             <Stack align="center" spacing={5}>
               <IconBuildingBank
                 stroke={1.5}
                 size={50}
-                color={theme.colors.brand[3]}
+                color={hover.bank ? "white" : theme.colors.brand[3]}
               />
               <Text size="xl" align="center">
                 Bank
@@ -77,12 +94,21 @@ export default function HomePage() {
               </Text>
             </Stack>
           </Paper>
-          <Paper withBorder p={20} className={classes.service_card}>
+          <Paper
+            withBorder
+            p={20}
+            className={cx(classes.service_card, [
+              selectedService === "airbnb" && classes.active,
+            ])}
+            onMouseEnter={() => setHover({ ...hover, airbnb: true })}
+            onMouseLeave={() => setHover({ ...hover, airbnb: false })}
+            onClick={() => setSelectedService("airbnb")}
+          >
             <Stack align="center" spacing={5}>
               <IconBrandAirbnb
                 stroke={1.5}
                 size={50}
-                color={theme.colors.brand[3]}
+                color={hover.airbnb ? "white" : theme.colors.brand[3]}
               />
               <Text size="xl" align="center">
                 AirBnB
@@ -92,27 +118,45 @@ export default function HomePage() {
               </Text>
             </Stack>
           </Paper>
-          <Paper withBorder p={20} className={classes.service_card}>
+          <Paper
+            withBorder
+            p={20}
+            className={cx(classes.service_card, [
+              selectedService === "shopping" && classes.active,
+            ])}
+            onMouseEnter={() => setHover({ ...hover, shopping: true })}
+            onMouseLeave={() => setHover({ ...hover, shopping: false })}
+            onClick={() => setSelectedService("shopping")}
+          >
             <Stack align="center" spacing={5}>
               <IconShoppingCart
                 stroke={1.5}
                 size={50}
-                color={theme.colors.brand[3]}
+                color={hover.shopping ? "white" : theme.colors.brand[3]}
               />
               <Text size="xl" align="center">
-                E-commerce
+                Shopping
               </Text>
               <Text align="center">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </Text>
             </Stack>
           </Paper>
-          <Paper withBorder p={20} className={classes.service_card}>
+          <Paper
+            withBorder
+            p={20}
+            className={cx(classes.service_card, [
+              selectedService === "ecommerce" && classes.active,
+            ])}
+            onMouseEnter={() => setHover({ ...hover, ecommerce: true })}
+            onMouseLeave={() => setHover({ ...hover, ecommerce: false })}
+            onClick={() => setSelectedService("ecommerce")}
+          >
             <Stack align="center" spacing={5}>
               <IconShoppingCart
                 stroke={1.5}
                 size={50}
-                color={theme.colors.brand[3]}
+                color={hover.ecommerce ? "white" : theme.colors.brand[3]}
               />
               <Text size="xl" align="center">
                 E-commerce
